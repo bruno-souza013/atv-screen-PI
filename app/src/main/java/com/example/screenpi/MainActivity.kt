@@ -4,44 +4,77 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.screenpi.ui.theme.ScreenpiTheme
+import androidx.compose.ui.unit.dp
+import com.example.screenpi.repository.DataRepository
+import com.example.screenpi.ui.theme.*
+import com.example.screenpi.ui.components.*
 
+/**
+ * Activity principal da aplicação
+ * Aplicando conceitos de POO: Composição e Injeção de Dependências
+ */
 class MainActivity : ComponentActivity() {
+
+    // Instância do repositório de dados
+    private val dataRepository = DataRepository.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ScreenpiTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+            CalmwavelandingTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    LandingPageContent(repository = dataRepository)
                 }
             }
         }
     }
 }
 
+/**
+ * Conteúdo principal da landing page
+ */
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun LandingPageContent(
+    repository: DataRepository,
+    modifier: Modifier = Modifier
+) {
+    // Carregamento dos dados usando o repositório
+    val projectInfo = remember { repository.getProjectInfo() }
+
+    // Layout principal usando LazyColumn
+    LazyColumn(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(bottom = 16.dp)
+    ) {
+        // Header da aplicação
+        item(key = "header") {
+            HeaderSection()
+        }
+        //Seção da projeto
+        item(key = "project") {
+            ProjectSection(project = projectInfo)
+        }
+    }
 }
 
-@Preview(showBackground = true)
+/**
+ * Preview da landing page
+ */
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun GreetingPreview() {
-    ScreenpiTheme {
-        Greeting("Android")
+fun LandingPagePreview() {
+    CalmwavelandingTheme {
+        LandingPageContent(repository = DataRepository.getInstance())
     }
 }
