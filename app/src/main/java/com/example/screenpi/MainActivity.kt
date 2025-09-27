@@ -50,7 +50,6 @@ fun LandingPageContent(
 ) {
     // Carregamento dos dados usando o repositório
     val projectInfo = remember { repository.getProjectInfo() }
-    val sdgsList = remember { repository.getRelatedSDGs() }
 
     // Layout principal usando LazyColumn
     LazyColumn(
@@ -69,6 +68,11 @@ fun LandingPageContent(
         // Seção dos ODSs
         item(key = "sdgs") {
             SDGSection(sdgs = sdgsList)
+        }
+
+        // Seção da equipe
+        item(key = "team") {
+            TeamSection(teamMembers = teamMembers)
         }
     }
 }
