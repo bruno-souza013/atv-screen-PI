@@ -65,6 +65,11 @@ fun LandingPageContent(
         item(key = "project") {
             ProjectSection(project = projectInfo)
         }
+
+        // Seção da equipe
+        item(key = "team") {
+            TeamSection(teamMembers = teamMembers)
+        }
     }
 }
 
