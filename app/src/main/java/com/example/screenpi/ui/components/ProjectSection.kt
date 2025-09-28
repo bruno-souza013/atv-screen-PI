@@ -1,5 +1,6 @@
 package com.example.screenpi.ui.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.screenpi.model.Project
+import com.example.screenpi.R
 
 /**
  * Componente para exibir informações do projeto
@@ -51,24 +53,14 @@ fun ProjectSection(
             )
 
             // Imagem do projeto
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(project.imageUrl)
-                    .crossfade(true)
-                    .memoryCacheKey("project_v2_${project.name.hashCode()}")
-                    .diskCacheKey("project_v2_${project.name.hashCode()}")
-                    .allowHardware(false)
-                    .build(),
+            Image(
+                painter = painterResource(id = R.drawable.banner_main),
                 contentDescription = "Imagem do projeto ${project.name}",
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(Color.LightGray),
-                contentScale = ContentScale.Crop,
-                error = painterResource(android.R.drawable.ic_menu_report_image),
-                placeholder = painterResource(android.R.drawable.ic_menu_gallery),
-                onError = { println("Erro ao carregar imagem: ${project.imageUrl}") }
+                    .clip(RoundedCornerShape(12.dp)),
+                contentScale = ContentScale.Crop
             )
 
             Spacer(modifier = Modifier.height(16.dp))

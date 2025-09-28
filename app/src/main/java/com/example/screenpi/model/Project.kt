@@ -4,7 +4,7 @@ data class Project(
     val name: String,
     val description: String,
     val objective: String,
-    val imageUrl: String
+//    val imageUrl: String
 ) {
     // Método para obter resumo do projeto
     fun getSummary(): String {
@@ -15,7 +15,7 @@ data class Project(
     fun isComplete(): Boolean {
         return name.isNotBlank() &&
                 description.isNotBlank() &&
-                objective.isNotBlank() &&
-                imageUrl.isNotBlank()
+                objective.isNotBlank() /*&&*/
+//                imageUrl.isNotBlank()
     }
 }

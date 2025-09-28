@@ -24,7 +24,7 @@ class DataRepository private constructor() {
                     "como retrocesso de áudio e ajuste de velocidade de reprodução sem alterar o tom. " +
                     "Integra aplicativo móvel com backend em Flask e modelo de deep learning em PyTorch.",
             objective = "Reduzir o estresse sonoro e melhorar a compreensão em crianças com TPAC em ambientes de aprendizado",
-            imageUrl = "https://picsum.photos/800/400"
+//            imageUrl = "https://picsum.photos/800/400"
         )
     }
 

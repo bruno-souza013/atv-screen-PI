@@ -15,6 +15,7 @@ import com.example.screenpi.repository.DataRepository
 import com.example.screenpi.ui.theme.*
 import com.example.screenpi.ui.components.*
 import com.fatec.calmwave_landing.ui.components.TeamSection
+import  com.example.screenpi.ui.components.FooterSection
 
 /**
  * Activity principal da aplicação
@@ -76,6 +77,12 @@ fun LandingPageContent(
         // Seção da equipe
         item(key = "team") {
             TeamSection(teamMembers = teamMembers)
+        }
+        // Seção do rodapé
+        item(key = "footer") {
+            FooterSection(
+                modifier = Modifier.padding(top = 32.dp)
+            )
         }
     }
 }
