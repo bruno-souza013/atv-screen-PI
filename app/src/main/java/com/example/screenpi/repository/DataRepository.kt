@@ -63,5 +63,40 @@ class DataRepository private constructor() {
             )
         )
     }
+    // Lista da equipe do projeto
+    fun getTeamMembers(): List<TeamMemberBase> {
+        return listOf(
+            Developer(
+                name = "Bruno Lopes de Souza",
+                imageUrl = "https://avatars.githubusercontent.com/u/148831208?s=200&v=4",
+                specialization = "Frontend/Mobile - Kotlin",
+                githubUrl = "https://github.com/bruno-souza013"
+            ),
+            Developer(
+                name = "Daniel Augusto Mandira",
+                imageUrl = "https://avatars.githubusercontent.com/u/105872910?s=200&v=4",
+                specialization = "Backend/APIs - Flask Python",
+                githubUrl = "https://github.com/DanielMandira"
+            ),
+            Developer(
+                name = "João Pedro Faustino Cordeiro",
+                imageUrl = "https://avatars.githubusercontent.com/u/115119412?s=200&v=4",
+                specialization = "Frontend/Mobile - Kotlin",
+                githubUrl = "https://github.com/jpfcordeiro"
+            ),
+            Developer(
+                name = "Leonardo Wicher L. Ferreira",
+                imageUrl = "https://avatars.githubusercontent.com/u/128431361?s=200&v=4",
+                specialization = "DevOps/Infraestrutura - Docker",
+                githubUrl = "https://github.com/wchrLeonardo"
+            ),
+            DbManager(
+                name = "Marcelo Augusto Aguiar da Cruz",
+                imageUrl = "https://avatars.githubusercontent.com/u/123131698?s=200&v=4",
+                databaseArea = "Desenvolvimento de IA",
+                githubUrl = "https://github.com/marcelitos1v9"
+            )
+        )
+    }
 
 }

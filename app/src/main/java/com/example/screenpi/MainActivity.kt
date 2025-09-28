@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.example.screenpi.repository.DataRepository
 import com.example.screenpi.ui.theme.*
 import com.example.screenpi.ui.components.*
+import com.fatec.calmwave_landing.ui.components.TeamSection
 
 /**
  * Activity principal da aplicação
@@ -50,6 +51,8 @@ fun LandingPageContent(
 ) {
     // Carregamento dos dados usando o repositório
     val projectInfo = remember { repository.getProjectInfo() }
+    val sdgsList = remember { repository.getRelatedSDGs() }
+    val teamMembers = remember { repository.getTeamMembers() }
 
     // Layout principal usando LazyColumn
     LazyColumn(

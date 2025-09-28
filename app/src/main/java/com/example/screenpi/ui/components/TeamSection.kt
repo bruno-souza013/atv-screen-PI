@@ -20,7 +20,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.fatec.calmwave_landing.model.*
+import com.example.screenpi.model.DbManager
+import com.example.screenpi.model.Developer
+import com.example.screenpi.model.TeamMemberBase
+import com.example.screenpi.model.*
 
 @Composable
 fun TeamSection(
@@ -157,7 +160,7 @@ fun TeamMemberCard(
                 Text(
                     text = when (teamMember) {
                         is Developer -> "💻"
-                        is DbManager -> "🗄️"
+                        is DbManager -> "\uD83E\uDD16"
                         else -> "👤"
                     },
                     fontSize = 20.sp
